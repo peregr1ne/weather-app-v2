@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  /* background-color: #edfcff; */
+}
+
+.wrapper {
+  background-image: url(./images/7.png);
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: moveBackground 100s linear infinite;
+}
+
+.app-screen-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  overflow: hidden;
+  max-width: 700px;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 60px auto;
+  color: black;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.liquidglass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidglass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.liquidglass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 1px 0 rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.liquidglass-text {
+  z-index: 3;
+}
+
+header {
+  border-bottom: 1px solid #f9f7fe3e;
+  padding-bottom: 30px;
+}
+
+.search-input {
+  background-color: #dff5f9;
+  border: none;
+  font-size: 16px;
+  padding: 20px;
+  border-radius: 6px;
+  width: 75%;
+}
+
+.search-button {
+  background-color: #484eb7;
+  border: none;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 16px;
+  color: #dff5f9;
+  margin-left: 5px;
+}
+
+main {
+  padding: 30px 0;
+}
+
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-city {
+  font-size: 38px;
+  font-weight: 900;
+  margin: 0;
+  color: #edfcff;
+}
+
+.current-details {
+  color: #dff5f9da;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.current-details strong {
+  color: #edfcff;
+}
+
+.current-temperature {
+  font-size: 48px;
+  color: #edfcff;
+}
+
+.ct-icon {
+  position: relative;
+  top: -8px;
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.ct-value {
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.ct-deg {
+  font-size: 28px;
+  position: relative;
+  top: -38px;
+}
+
+footer {
+  color: #dff5f98f;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: center;
+  padding: 0 30px;
+}
+
+footer a {
+  color: #dff5f9;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@keyframes moveBackground {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% -500%;
+  }
+}
+/* display: flex;
+flex-direction: column;
+justify-content: center;
+backdrop-filter: blur(50px);
+background-color: rgba(255, 255, 255, 0.2);
+max-width: 700px;
+border-radius: 10px;
+box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+  inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5); */
+/* box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08); */
+/* padding: 30px;
+margin: 60px auto; */
