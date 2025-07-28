@@ -1,14 +1,27 @@
 let apiKey = `tb68bfo76465b10730ef185037e7aaa0`;
-function search(city) {
-  let temp = city;
-  if (!temp) {
-    console.log("if");
-    temp = "Kharkiv";
-  }
+let defaultCity = "Kharkiv";
 
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${temp}&key=${apiKey}&units=metric`;
-  console.log(apiUrl, "apiUrl");
-  axios.get(apiUrl).then(refreshWeather);
+const getApiUrl = (city, type) => {
+  return `https://api.shecodes.io/weather/v1/${type}?query=${city}&key=${apiKey}&units=metric`;
+};
+
+const initWeather = () => {
+  search(defaultCity);
+};
+
+const getCurrentCityWeather = (city) => {
+  let apiUrlCurrent = getApiUrl(city, "current");
+  axios.get(apiUrlCurrent).then(refreshWeather);
+};
+
+const getCityForecast = (city) => {
+  let apiUrlCurrent = getApiUrl(city, "forecast");
+  axios.get(apiUrlCurrent).then(displayForecast);
+};
+
+function search(city) {
+  getCurrentCityWeather(city);
+  getCityForecast(city);
 }
 
 function refreshWeather(response) {
@@ -68,4 +81,37 @@ function handleSearch(event) {
   search(city);
 }
 
-search();
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = [`Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`];
+
+  return days[date.getDay()];
+}
+
+function displayForecast(response) {
+  let forecastHtml = "";
+
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `<div class="forecast-day">
+          <div class="forecast-date">${formatDay(day.time)}</div>
+          <div><img src="${
+            day.condition.icon_url
+          }" class="forecast-icon" /></div>
+          <div class="forecast-temps">
+            <div class="temps-set"><strong>${Math.round(
+              day.temperature.maximum
+            )}°</strong></div>
+            <div class="temps-set">${Math.round(day.temperature.minimum)}°</div>
+         </div>
+        </div>`;
+    }
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
+initWeather();
