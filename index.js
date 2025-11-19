@@ -68,7 +68,7 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
 
-  return `${day} ${hours}:${minutes}`;
+  return `${day}`;
 }
 
 let form = document.querySelector("#search-form");
