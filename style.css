@@ -4,15 +4,20 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Manrope", sans-serif;
+  height: 100%;
 }
 
 .wrapper {
   background-image: url(./images/7.png);
   background-size: cover;
   /* background-repeat: no-repeat; */
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  justify-content: center;
+  /* justify-content: center; */
   overflow: hidden;
   max-width: 700px;
   border-radius: 10px;
@@ -61,6 +66,13 @@ body {
 
 .liquidglass-text {
   z-index: 3;
+  overflow: scroll;
+}
+
+.weather-app {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 header {
@@ -187,6 +199,12 @@ main {
   padding: 0 6px;
 }
 
+.weather-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 footer {
   color: #dff5f98f;
   font-size: 12px;
@@ -208,5 +226,64 @@ footer a {
   }
   to {
     background-position: 0% -500%;
+  }
+}
+
+@media all and (max-width: 648px) {
+  .app-screen-wrapper {
+    margin: 20px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .forecast {
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+  }
+
+  .place {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .forecast-day:first-child {
+    width: 100%;
+  }
+
+  .forecast-day {
+    width: 49%;
+    margin-bottom: 10px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-button {
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .ct-value {
+    font-size: 69px;
+  }
+
+  .current-weather {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
